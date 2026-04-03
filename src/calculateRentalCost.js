@@ -4,25 +4,21 @@
  * @return {number}
  */
 function calculateRentalCost(days) {
-  payment = 40;
-  discont_per_thirddays = 20;
-  discont_per_fifthdays = 50;
+  const payment = 40;
+  const discontPerThirdDay = 20;
+  const discontPerFifthDay = 50;
+  const longDay =7;
+  const shortDay =3;
 
-  if (days < 0) {
-    return 'Enter valid days';
+  if (days >= longDay) {
+    return days * payment - discontPerThirdDay;
   }
 
-  if (days < 3) {
-    return days * payment;
+  if (days >= shortDay) {
+    return days * payment - discontPerFifthDay;
   }
 
-  if (days > 2 && days < 7) {
-    return days * payment - discont;
-  }
-
-  if (days > 6) {
-    return days * payment - discont_per_fifthdays;
-  }
+  return days * payment;
 }
 
 module.exports = calculateRentalCost;
